@@ -1,7 +1,23 @@
 assets:
+  ambulance:
+    type: 'image'
+    src: 'assets/images/cars/ambulance.png'
 
 scenes:
 
 groups:
+  - background
+  - cars
 
 prefabs:
+  player:
+    type: 'car'
+    options:
+      key: 'ambulance'
+      position:
+        x: 0.1
+        y: 0.8
+        relative: true
+      anchor:
+        x: 0.5
+        y: 1

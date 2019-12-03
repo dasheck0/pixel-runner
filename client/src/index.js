@@ -8,6 +8,7 @@ const game = new Phaser.Game({
   height: config.height,
   scene: [GameScene],
   backgroundColor: config.window.backgroundColor,
+  pixelArt: true,
   physics: {
     default: 'arcade',
     arcade: {
@@ -21,6 +22,8 @@ const game = new Phaser.Game({
   autoRound: false,
   'render.transparent': true,
 });
+
+console.log("Starting scene game");
 
 game.scene.start('game', {
   configFile: 'assets/states/game.yml',

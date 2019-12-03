@@ -70,6 +70,7 @@ export default class BaseScene extends Phaser.Scene {
 
     Object.keys(this.config.prefabs || {}).forEach((key) => {
       const value = this.config.prefabs[key];
+      console.log("Loadingffsdfs", key);
       this.prefabs[key] = new (prefabs[value.type])(key, this, value.options, this.envs);
     });
 
