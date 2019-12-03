@@ -1,0 +1,33 @@
+{
+  "name": "dasheck0-phaser3-template",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "pm2-runtime start config/pm2.json --env production",
+    "start:develop": "pm2 start config/pm2.json",
+    "build:production": "cd client && npm run build:production && git add dist/production && git commit -m \"Rebuild production game client\" dist/production",
+    "predeploy": "npm run build:production",
+    "deploy": "git flow release start $npm_package_version && git flow release finish -m \"$npm_package_version\" $npm_package_version && git push origin master --tags && git checkout develop && git push origin develop",
+    "deploy:patch": "npm run patch && npm run deploy",
+    "patch": "npm --no-git-tag-version version patch",
+    "postpatch": "git add package.json && git commit -m \"chore: set version to $npm_package_version\" package*"
+  },
+  "dependencies": {
+    "config": "^3.2.4",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "pg": "^7.14.0",
+    "pg-hstore": "^2.3.3",
+    "pm2": "^4.1.2",
+    "sequelize": "^5.21.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "engines": {
+    "node": "8.9.3"
+  }
+}

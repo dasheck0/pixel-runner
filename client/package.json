@@ -1,0 +1,32 @@
+{
+  "name": "dasheck0-phaser3-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:develop": "webpack --env develop",
+    "build:production": "webpack --env production",
+    "start:develop": "webpack-dev-server --env develop"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "phaser": "^3.21.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^4.5.2",
+    "html-webpack-plugin": "^3.2.0",
+    "moment": "^2.24.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
