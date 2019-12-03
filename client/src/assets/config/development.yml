@@ -1,6 +1,6 @@
 width: 320
 height: 240
-debug: true
+debug: false
 window:
   backgroundColor: '#ff0000'
 game:

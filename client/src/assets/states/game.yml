@@ -2,6 +2,24 @@ assets:
   ambulance:
     type: 'image'
     src: 'assets/images/cars/ambulance.png'
+  background:
+    type: 'image'
+    src: 'assets/images/background/mountain/sky.png'
+  clouds_BG:
+    type: 'image'
+    src: 'assets/images/background/mountain/clouds_BG.png'
+  clouds_MG_1:
+    type: 'image'
+    src: 'assets/images/background/mountain/clouds_MG_1.png'
+  clouds_MG_2:
+    type: 'image'
+    src: 'assets/images/background/mountain/clouds_MG_2.png'
+  clouds_MG_3:
+    type: 'image'
+    src: 'assets/images/background/mountain/clouds_MG_3.png'
+  mountains:
+    type: 'image'
+    src: 'assets/images/background/mountain/mountains.png'
 
 scenes:
 
@@ -13,6 +31,7 @@ prefabs:
   player:
     type: 'car'
     options:
+      group: 'cars'
       key: 'ambulance'
       position:
         x: 0.1
@@ -21,3 +40,7 @@ prefabs:
       anchor:
         x: 0.5
         y: 1
+  background:
+    type: 'background'
+    options:
+      group: 'background'
