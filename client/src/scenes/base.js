@@ -30,6 +30,13 @@ export default class BaseScene extends Phaser.Scene {
         this.load.image(key, value.src);
       }
 
+      if (value.type === 'spritesheet') {
+        this.load.spritesheet(key, value.src, {
+          frameWidth: value.frameWidth,
+          frameHeight: value.frameHeight
+        });
+      }
+
       if (value.type === 'audio') {
         this.load.audio(key, value.src);
       }

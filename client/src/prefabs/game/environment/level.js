@@ -61,5 +61,17 @@ export default class Level extends Base {
     this.backgroundLayer = this.map.createBlankDynamicLayer('background', tileset, 0, 0, width, height);
     this.backgroundLayer.setDepth(1);
     this.backgroundLayer.putTilesAt(data, 0, 0);
+
+    this.backgroundLayer.getTilesWithin(0, 0, width, height).forEach((tile, index) => {
+      const blocked = index < width || index >= width * (height - 1) || (index % width === 0) || (index % width === (width - 1));
+
+      tile.properties.blocked = blocked;
+      tile.properties.unblocked = !blocked;
+
+      if (blocked) {
+        tile.setCollision(true, true, true, true, this.backgroundLayer);
+        tile.tint = 0xff0000;
+      }
+    });
   }
 }

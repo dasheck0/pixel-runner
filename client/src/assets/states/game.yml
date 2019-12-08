@@ -5,27 +5,77 @@ assets:
   terrain:
     type: 'image'
     src: 'assets/images/environment/terrain.png'
+  MaskDudeDoubleJump:
+    type: 'spritesheet'
+    src: 'assets/images/players/Mask Dude/Double Jump (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  MaskDudeFall:
+    type: 'image'
+    src: 'assets/images/players/Mask Dude/Fall (32x32).png'
+  MaskDudeHit:
+    type: 'spritesheet'
+    src: 'assets/images/players/Mask Dude/Hit (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  MaskDudeIdle:
+    type: 'spritesheet'
+    src: 'assets/images/players/Mask Dude/Idle (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  MaskDudeJump:
+    type: 'image'
+    src: 'assets/images/players/Mask Dude/Jump (32x32).png'
+  MaskDudeRun:
+    type: 'spritesheet'
+    src: 'assets/images/players/Mask Dude/Run (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  MaskDudeWallJump:
+    type: 'spritesheet'
+    src: 'assets/images/players/Mask Dude/Wall Jump (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  NinjaFrogDoubleJump:
+    type: 'spritesheet'
+    src: 'assets/images/players/Ninja Frog/Double Jump (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  NinjaFrogFall:
+    type: 'image'
+    src: 'assets/images/players/Ninja Frog/Fall (32x32).png'
+  NinjaFrogHit:
+    type: 'spritesheet'
+    src: 'assets/images/players/Ninja Frog/Hit (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  NinjaFrogIdle:
+    type: 'spritesheet'
+    src: 'assets/images/players/Ninja Frog/Idle (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  NinjaFrogJump:
+    type: 'image'
+    src: 'assets/images/players/Ninja Frog/Jump (32x32).png'
+  NinjaFrogRun:
+    type: 'spritesheet'
+    src: 'assets/images/players/Ninja Frog/Run (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
+  NinjaFrogWallJump:
+    type: 'spritesheet'
+    src: 'assets/images/players/Ninja Frog/Wall Jump (32x32).png'
+    frameWidth: 32
+    frameHeight: 32
 
 scenes:
 
 groups:
   - background
   - cars
+  - players
 
 prefabs:
-  player:
-    type: 'car'
-    options:
-      group: 'cars'
-      key: 'ambulance'
-      position:
-        x: 0.1
-        y: 0.8
-        relative: true
-      anchor:
-        x: 0.5
-        y: 1
-
   background:
     type: 'background'
     options:
@@ -50,3 +100,13 @@ prefabs:
 
   level:
     type: 'level'
+
+  player:
+    type: 'player'
+    options:
+      key: 'MaskDudeIdle'
+      group: 'players'
+      position:
+        x: 0.5
+        y: 0.5
+        relative: true
