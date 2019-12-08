@@ -52,10 +52,4 @@ export default class StripeBackground extends Background {
       this.graphics.fillPath();
     }
   }
-
-  update(time, delta) {
-    super.update(time, delta);
-
-    this.draw();
-  }
 }

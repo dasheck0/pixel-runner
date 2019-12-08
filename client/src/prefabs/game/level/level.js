@@ -1,6 +1,11 @@
-import { times, sample, flattenDeep } from 'lodash';
+import { times, sample } from 'lodash';
 
 import Base from '../../base/object'
+import DiamondBackground from '../environment/diamondBackground';
+import RectangleBackground from '../environment/rectangleBackground';
+import SquareBackground from '../environment/squareBackground';
+import StripeBackground from '../environment/stripeBackground';
+import ZigZagBackground from '../environment/zigzagBackground';
 
 export default class Level extends Base {
   constructor(name, scene, options, envs) {
@@ -11,6 +16,7 @@ export default class Level extends Base {
 
     this.width = Math.trunc(this.envs.width / size);
     this.height = Math.trunc(this.envs.height / size);
+    this.background = null;
 
     this.map = this.scene.make.tilemap({
       width: this.width,
@@ -72,6 +78,27 @@ export default class Level extends Base {
     });
 
     times(10, () => this.addRandomBlock(null, 2));
+
+    this.setBackground('zigzag');
+  }
+
+  setBackground(name) {
+    const types = [
+      { name: 'diamond', clazz: DiamondBackground },
+      { name: 'rectangle', clazz: RectangleBackground },
+      { name: 'square', clazz: SquareBackground },
+      { name: 'stripe', clazz: StripeBackground },
+      { name: 'zigzag', clazz: ZigZagBackground }
+    ];
+
+    const type = types.find(type => type.name === name);
+    if (type) {
+      if (this.background) {
+        this.background.destroy();
+      }
+
+      this.background = new type.clazz(name, this.scene, {}, this.envs);
+    }
   }
 
   addRandomBlock(blockType, textureType) {
@@ -111,5 +138,11 @@ export default class Level extends Base {
         }
       }
     })
+  }
+
+  update(time, delta) {
+    if (this.background) {
+      this.background.update(time, delta);
+    }
   }
 }

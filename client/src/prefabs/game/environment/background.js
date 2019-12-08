@@ -15,13 +15,21 @@ export default class Background extends Base {
   }
 
   update(time, delta) {
-    if (this.scene.prefabs && this.scene.prefabs.player) {
-      this.xOffset = ((this.scene.prefabs.player.x / this.envs.width) - 0.5) * this.maxOffset;
-      this.graphics.setPosition(this.xOffset, 0);
+    if (this.graphics) {
+      if (this.scene.prefabs && this.scene.prefabs.player) {
+        this.xOffset = ((this.scene.prefabs.player.x / this.envs.width) - 0.5) * this.maxOffset;
+        this.graphics.setPosition(this.xOffset, 0);
+      }
+
+      this.draw();
     }
   }
 
   _mod(value, mod) {
     return ((value % mod) + mod) % mod;
+  }
+
+  destroy() {
+    this.graphics.destroy();
   }
 }

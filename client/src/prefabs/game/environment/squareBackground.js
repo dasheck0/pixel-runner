@@ -33,10 +33,4 @@ export default class SquareBackground extends Background {
       }
     }
   }
-
-  update(time, delta) {
-    super.update(time, delta);
-
-    this.draw();
-  }
 }

@@ -43,10 +43,28 @@ export default class GameScene extends BaseScene {
       this.prefabs.player.playerType = 'NinjaFrog';
     }, this);
 
+    this.input.keyboard.on('keyup-' + 'C', function (event) {
+      this.prefabs.level.setBackground('diamond');
+    }, this);
+    this.input.keyboard.on('keyup-' + 'V', function (event) {
+      this.prefabs.level.setBackground('rectangle');
+    }, this);
+    this.input.keyboard.on('keyup-' + 'B', function (event) {
+      this.prefabs.level.setBackground('square');
+    }, this);
+    this.input.keyboard.on('keyup-' + 'N', function (event) {
+      this.prefabs.level.setBackground('stripe');
+    }, this);
+    this.input.keyboard.on('keyup-' + 'M', function (event) {
+      this.prefabs.level.setBackground('zigzag');
+    }, this);
+
     this.physics.add.collider(this.prefabs.player, this.prefabs.level.backgroundLayer);
   }
 
   update(time, delta) {
-    this.prefabs.background.update(time, delta);
+    super.update(time, delta);
+
+    this.prefabs.level.update(time, delta);
   }
 }

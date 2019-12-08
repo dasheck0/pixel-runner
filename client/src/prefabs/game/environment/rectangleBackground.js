@@ -33,10 +33,4 @@ export default class RectangleBackground extends Background {
       }
     }
   }
-
-  update(time, delta) {
-    super.update(time, delta);
-
-    this.draw();
-  }
 }

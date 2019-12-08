@@ -76,28 +76,6 @@ groups:
   - players
 
 prefabs:
-  background:
-    type: 'background'
-    options:
-      group: 'background'
-      key: 'background'
-      layers:
-        - key: 'clouds_BG'
-          speed: 20
-          offset: -20
-        - key: 'mountains'
-          speed: 30
-          offset: -20
-        - key: 'clouds_MG_3'
-          speed: 40
-          offset: -20
-        - key: 'clouds_MG_2'
-          speed: 50
-          offset: -20
-        - key: 'clouds_MG_1'
-          speed: 60
-          offset: -20
-
   level:
     type: 'level'
 
