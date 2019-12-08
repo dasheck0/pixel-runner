@@ -4,4 +4,5 @@ debug: false
 window:
   backgroundColor: '#ff0000'
 game:
+  gravity: 1000
 

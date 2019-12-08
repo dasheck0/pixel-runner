@@ -19,6 +19,8 @@ export default class Player extends Sprite {
 
     this.playerType = 'NinjaFrog';
 
+    this.movementSpeed = 200;
+
     this.scene.anims.create({
       key: 'idle',
       frames: this.scene.anims.generateFrameNumbers(`${this.playerType}Idle`, { start: 0, end: 11 }),
@@ -58,25 +60,33 @@ export default class Player extends Sprite {
       this.setTexture(`${this.playerType}Jump`);
     }, this);
 
-    this.setGravity(0, 300);
+    this.setGravity(0, this.envs.game.gravity);
 
-    this.healthBar = this.scene.add.easyProgressbar(100, 100, 32, 6, {
-      color: 0xb3f081,
+    this.healthBar = this.scene.add.easyProgressbar(100, 100, 64, 12, {
+      color: 0xaf7159,
       padding: 1,
-      radius: 4,
+      radius: 2,
       progress: 0.5,
       text: {
-        enabled: false,
-        format: progress => Math.trunc(1),
+        enabled: true,
+        format: progress => `HP: ${Math.trunc(progress * 100)}`,
+        align: {
+          x: 'center',
+          y: 'start'
+        },
+        origin: {
+          x: 0.5,
+          y: 0.6
+        },
         style: {
-          fontFamily: 'pixel',
-          fontSize: '16px',
+          fontFamily: 'mini-square',
+          fontSize: '12px',
           shadow: {
             offsetX: 2,
             offsetY: 2,
             color: '#000000',
-            blur: 4,
-            stroke: true,
+            blur: 0,
+            stroke: false,
             fill: true
           }
         }
@@ -106,7 +116,7 @@ export default class Player extends Sprite {
       this.canJump = false;
       this.canDoubleJump = true;
 
-      this.setVelocityY(-250);
+      this.setVelocityY(-this.envs.game.gravity / 2);
       this.anims.stop();
       this.setTexture(`${this.playerType}Jump`);
     }
@@ -125,7 +135,7 @@ export default class Player extends Sprite {
     if (!this.doubleJumping) {
       this.doubleJumping = true;
       this.canDoubleJump = false;
-      this.setVelocityY(-250);
+      this.setVelocityY(-this.envs.game.gravity / 2);
       this.anims.play('doubleJump', true);
     }
   }
@@ -137,7 +147,7 @@ export default class Player extends Sprite {
   update(time, delta) {
     super.update(time, delta);
 
-    this.healthBar.setPosition(this.x - 16, this.y - 32 * 0.75);
+    //this.healthBar.setPosition(this.x - 16, this.y - 32 * 0.75);
 
     this.setFlipX(this.oldDirection);
     this.setVelocityX(0);
@@ -150,11 +160,11 @@ export default class Player extends Sprite {
 
     if (this.cursors.left.isDown) {
       this.run();
-      this.setVelocityX(-125);
+      this.setVelocityX(-this.movementSpeed);
       this.oldDirection = true;
     } else if (this.cursors.right.isDown) {
       this.run();
-      this.setVelocityX(125);
+      this.setVelocityX(this.movementSpeed);
 
       this.oldDirection = false;
     } else {
