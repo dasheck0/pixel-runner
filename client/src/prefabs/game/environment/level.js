@@ -70,7 +70,6 @@ export default class Level extends Base {
 
       if (blocked) {
         tile.setCollision(true, true, true, true, this.backgroundLayer);
-        tile.tint = 0xff0000;
       }
     });
   }

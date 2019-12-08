@@ -1,4 +1,5 @@
 import 'phaser';
+import EasyProgressbarPlugin from 'phaser3-plugin-easyprogressbar';
 
 import config from './assets/config';
 import GameScene from './scenes/game';
@@ -22,6 +23,13 @@ const game = new Phaser.Game({
   },
   autoRound: false,
   'render.transparent': true,
+  plugins: {
+    global: [{
+      key: 'EasyProgressbarPlugin',
+      plugin: EasyProgressbarPlugin,
+      start: true
+    }]
+  }
 });
 
 console.log("Starting scene game");

@@ -4,8 +4,8 @@ export default class StripeBackground extends Background {
   constructor(name, scene, options, envs) {
     super(name, scene, options, envs);
 
-    this.zigZagCount = 15;
-    this.zigZagPeakCount = 15;
+    this.zigZagCount = 7;
+    this.zigZagPeakCount = 5;
     this.zigZagHeight = 25;
 
     this.offset = 0;

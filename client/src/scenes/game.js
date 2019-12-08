@@ -36,12 +36,10 @@ export default class GameScene extends BaseScene {
     }, this);
 
     this.input.keyboard.on('keyup-' + 'Y', function (event) {
-      console.log("fdhg487845954879");
       this.prefabs.player.playerType = 'MaskDude';
     }, this);
 
     this.input.keyboard.on('keyup-' + 'X', function (event) {
-      console.log("fdhg48");
       this.prefabs.player.playerType = 'NinjaFrog';
     }, this);
 

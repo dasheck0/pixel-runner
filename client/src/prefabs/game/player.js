@@ -59,6 +59,29 @@ export default class Player extends Sprite {
     }, this);
 
     this.setGravity(0, 300);
+
+    this.healthBar = this.scene.add.easyProgressbar(100, 100, 32, 6, {
+      color: 0xb3f081,
+      padding: 1,
+      radius: 4,
+      progress: 0.5,
+      text: {
+        enabled: false,
+        format: progress => Math.trunc(1),
+        style: {
+          fontFamily: 'pixel',
+          fontSize: '16px',
+          shadow: {
+            offsetX: 2,
+            offsetY: 2,
+            color: '#000000',
+            blur: 4,
+            stroke: true,
+            fill: true
+          }
+        }
+      }
+    });
   }
 
   idle() {
@@ -112,6 +135,10 @@ export default class Player extends Sprite {
   }
 
   update(time, delta) {
+    super.update(time, delta);
+
+    this.healthBar.setPosition(this.x - 16, this.y - 32 * 0.75);
+
     this.setFlipX(this.oldDirection);
     this.setVelocityX(0);
 
