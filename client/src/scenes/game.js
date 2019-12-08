@@ -13,16 +13,17 @@ export default class GameScene extends BaseScene {
 
     this.input.keyboard.on('keyup-' + 'W', function (event) {
       this.prefabs.player.start();
-      this.prefabs.background.start();
     }, this);
 
     this.input.keyboard.on('keyup-' + 'S', function (event) {
       this.prefabs.player.stop();
-      this.prefabs.background.stop();
     }, this);
   }
 
   update(time, delta) {
+    console.log("mouse", this.input.activePointer.worldX, this.input.activePointer.worldY);
+
+
     this.prefabs.background.update(time, delta);
   }
 }

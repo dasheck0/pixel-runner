@@ -7,8 +7,8 @@ export default class Background extends Base {
   constructor(name, scene, options, envs) {
     super(name, scene, options, envs);
 
-    this.background = new Sprite('background', scene, {
-      key: 'background',
+    this.background = new Sprite(`${name}_background`, scene, {
+      key: options.key,
       position: {
         x: 0.5,
         y: 0.5,
@@ -20,78 +20,16 @@ export default class Background extends Base {
       }
     });
 
-    this.layers = [];
-
-    // [
-    //   'clouds_BG',
-    //   'mountains',
-    //   'clouds_MG_3',
-    //   'clouds_MG_2',
-    //   'clouds_MG_1',
-    // ].forEach((image) => {
-    //   const sprite = new Sprite(image, scene, {
-    //     key: image,
-    //     position: {
-    //       x: 0.5,
-    //       y: 1,
-    //       relative: true
-    //     },
-    //     anchor: {
-    //       x: 0.5,
-    //       y: 1
-    //     }
-    //   });
-
-    const parallaxClouds = new ParallaxItem('clouds', scene, {
-      key: 'clouds_BG',
-      group: 'background',
-      movementSpeed: 20,
-      offset: {
-        y: -20
-      }
+    this.layers = (options.layers || []).map((layer, index) => {
+      return new ParallaxItem(`${name}_layer_${index}`, scene, {
+        key: layer.key,
+        group: options.group,
+        movementSpeed: layer.speed,
+        offset: {
+          y: layer.offset || 0
+        }
+      });
     });
-
-    const parallaxMountain = new ParallaxItem('mountain', scene, {
-      key: 'mountains',
-      group: 'background',
-      movementSpeed: 30,
-      offset: {
-        y: -20
-      }
-    });
-
-    const parallaxClouds3 = new ParallaxItem('mountain', scene, {
-      key: 'clouds_MG_3',
-      group: 'background',
-      movementSpeed: 40,
-      offset: {
-        y: -20
-      }
-    });
-
-    const parallaxClouds2 = new ParallaxItem('mountain', scene, {
-      key: 'clouds_MG_2',
-      group: 'background',
-      movementSpeed: 50,
-      offset: {
-        y: -20
-      }
-    });
-
-    const parallaxClouds1 = new ParallaxItem('mountain', scene, {
-      key: 'clouds_MG_1',
-      group: 'background',
-      movementSpeed: 60,
-      offset: {
-        y: -20
-      }
-    });
-
-    this.layers.push(parallaxClouds);
-    this.layers.push(parallaxMountain);
-    this.layers.push(parallaxClouds3);
-    this.layers.push(parallaxClouds2);
-    this.layers.push(parallaxClouds1);
   }
 
   start() {

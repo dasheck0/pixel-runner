@@ -2,24 +2,9 @@ assets:
   ambulance:
     type: 'image'
     src: 'assets/images/cars/ambulance.png'
-  background:
+  terrain:
     type: 'image'
-    src: 'assets/images/background/mountain/sky.png'
-  clouds_BG:
-    type: 'image'
-    src: 'assets/images/background/mountain/clouds_BG.png'
-  clouds_MG_1:
-    type: 'image'
-    src: 'assets/images/background/mountain/clouds_MG_1.png'
-  clouds_MG_2:
-    type: 'image'
-    src: 'assets/images/background/mountain/clouds_MG_2.png'
-  clouds_MG_3:
-    type: 'image'
-    src: 'assets/images/background/mountain/clouds_MG_3.png'
-  mountains:
-    type: 'image'
-    src: 'assets/images/background/mountain/mountains.png'
+    src: 'assets/images/environment/terrain.png'
 
 scenes:
 
@@ -40,7 +25,28 @@ prefabs:
       anchor:
         x: 0.5
         y: 1
+
   background:
     type: 'background'
     options:
       group: 'background'
+      key: 'background'
+      layers:
+        - key: 'clouds_BG'
+          speed: 20
+          offset: -20
+        - key: 'mountains'
+          speed: 30
+          offset: -20
+        - key: 'clouds_MG_3'
+          speed: 40
+          offset: -20
+        - key: 'clouds_MG_2'
+          speed: 50
+          offset: -20
+        - key: 'clouds_MG_1'
+          speed: 60
+          offset: -20
+
+  level:
+    type: 'level'
