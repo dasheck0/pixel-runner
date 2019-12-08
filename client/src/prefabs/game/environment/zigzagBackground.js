@@ -24,7 +24,7 @@ export default class StripeBackground extends Background {
   draw() {
     this.graphics.clear();
 
-    const rect = new Phaser.Geom.Rectangle(0, 0, this.envs.width, this.envs.height);
+    const rect = new Phaser.Geom.Rectangle(-this.maxOffset, 0, this.envs.width + this.maxOffset * 2, this.envs.height);
     this.graphics.fillStyle(this.color0, 1);
     this.graphics.fillRectShape(rect);
 
@@ -32,19 +32,19 @@ export default class StripeBackground extends Background {
     for (let i = -1; i < this.zigZagCount + 2; i += 1) {
       this.graphics.beginPath();
       const currentHeight = (i + 1) * step - this.offset;
-      this.graphics.moveTo(0, currentHeight);
+      this.graphics.moveTo(-(this.envs.width / (this.zigZagPeakCount * 2)), currentHeight);
 
-      for (let x = 1; x <= this.zigZagPeakCount * 2; x += 1) {
-        this.graphics.lineTo(x * (this.envs.width / (this.zigZagPeakCount * 2)), currentHeight - ((x % 2 === 0) ? 0 : step));
+      for (let x = -1; x <= (this.zigZagPeakCount + 1) * 2; x += 1) {
+        this.graphics.lineTo(x * (this.envs.width / (this.zigZagPeakCount * 2)), currentHeight - ((this._mod(x, 2) === 0) ? 0 : step));
       }
 
-      this.graphics.lineTo(this.envs.width, currentHeight + this.zigZagHeight);
+      this.graphics.lineTo((this.zigZagPeakCount + 1) * 2 * (this.envs.width / (this.zigZagPeakCount * 2)), currentHeight + this.zigZagHeight);
 
-      for (let x = this.zigZagPeakCount * 2; x >= 0; x -= 1) {
-        this.graphics.lineTo(x * (this.envs.width / (this.zigZagPeakCount * 2)), currentHeight - ((x % 2 === 0) ? 0 : step) + this.zigZagHeight);
+      for (let x = (this.zigZagPeakCount + 1) * 2; x >= -1; x -= 1) {
+        this.graphics.lineTo(x * (this.envs.width / (this.zigZagPeakCount * 2)), currentHeight - ((this._mod(x, 2) === 0) ? 0 : step) + this.zigZagHeight);
       }
 
-      this.graphics.lineTo(0, currentHeight);
+      this.graphics.lineTo(-(this.envs.width / (this.zigZagPeakCount * 2)), currentHeight);
 
       this.graphics.closePath();
 

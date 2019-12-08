@@ -11,7 +11,7 @@ export default class Background extends Base {
     this.color1 = Phaser.Display.Color.GetColor(color.red, color.green, color.blue);
 
     this.xOffset = 0;
-    this.maxOffset = 100;
+    this.maxOffset = 50;
   }
 
   update(time, delta) {
