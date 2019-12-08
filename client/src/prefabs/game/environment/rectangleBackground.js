@@ -4,8 +4,9 @@ export default class RectangleBackground extends Background {
   constructor(name, scene, options, envs) {
     super(name, scene, options, envs);
 
-    this.rowCount = 12;
-    this.columnCount = 10;
+    this.rowCount = options.rowCount || 12;
+    this.helperRowCount = Math.ceil(this.maxOffset / (this.envs.width / this.rowCount));
+    this.columnCount = options.columnCount || 10;
     this.offset = 0;
 
     this.tween = this.scene.tweens.add({
@@ -23,7 +24,7 @@ export default class RectangleBackground extends Background {
     this.graphics.clear();
 
     for (let y = 0; y <= this.columnCount + 1; y += 1) {
-      for (let x = 0; x < this.rowCount; x += 1) {
+      for (let x = -this.helperRowCount; x < this.rowCount + this.helperRowCount; x += 1) {
         const rect = new Phaser.Geom.Rectangle(x * this.envs.width / this.rowCount, y * this.envs.height / this.columnCount - this.offset, this.envs.width / this.rowCount, this.envs.height / this.columnCount);
         const color = (x + y) % 2 === 0 ? this.color0 : this.color1;
 
